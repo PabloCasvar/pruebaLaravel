@@ -12,5 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $name = 'Pablo';
+    $tasks = [
+        'Actividad 1', 
+        'Actividad 2', 
+        'Actividad 3'
+    ];
+
+    $tasksdb = DB::table('tasks')->get();
+
+    return view('welcome', compact('name', 'tasks', 'tasksdb'));
+});
+
+Route::get('/api/gettasks', function(){
+    $tasks = DB::table('tasks')->get();
+
+    return $tasks;
+});
+
+Route::get('/tasks/{id}', function($id){
+    $task = DB::table('tasks')->find($id);
+
+    dd($task);
 });
