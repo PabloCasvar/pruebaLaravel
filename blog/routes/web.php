@@ -25,14 +25,21 @@ Route::get('/', function () {
     return view('welcome', compact('name', 'tasks', 'tasksdb'));
 });
 
+
 Route::get('/api/gettasks', function(){
     $tasks = DB::table('tasks')->get();
 
     return $tasks;
 });
 
-Route::get('/tasks/{id}', function($id){
-    $task = DB::table('tasks')->find($id);
+Route::get('/tasks', function(){
+    //$tasks = DB::table('tasks')->get();
+    $tasks = App\Task::all();
+    return view('tasks.index', compact('tasks'));
+});
 
-    dd($task);
+Route::get('/tasks/{id}', function($id){
+    //$task = DB::table('tasks')->find($id);
+    $task = App\Task::find($id);
+    return view('tasks.show', compact('task'));
 });
