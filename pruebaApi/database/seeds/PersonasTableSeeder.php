@@ -20,5 +20,14 @@ class PersonasTableSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
+        DB::table('personas')->insert([
+            'nombre' => 'Roberto', 
+            'apellido_primer' => 'Apellido',
+            'apellido_segundo' => 'Apellido2',
+            'direccion' => 'Este es el texto de la direción, incluye puntuación especial; Esto es acentos y letras eñe',
+            'created_at'=> Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
     }
 }
